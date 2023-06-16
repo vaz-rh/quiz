@@ -8,8 +8,7 @@ const _result = document.getElementById('result');
 const _correctScore = document.getElementById('correct-score');
 const _totalQuestion = document.getElementById('total-question');
 
-let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 50;
-
+let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 50, question_number = 1;
 // load question from API
 async function loadQuestion(){
     const APIUrl = 'https://opentdb.com/api.php?amount=50';
@@ -43,7 +42,7 @@ function showQuestion(data){
     // console.log(correctAnswer);
 
     
-    _question.innerHTML = `${data.question} <br> <span class = "category"> ${data.category} </span>`;
+    _question.innerHTML = `<span id="question_number">${question_number}</span> - ${data.question} <br> <span class = "category"> ${data.category} </span>`;
     _options.innerHTML = `
         ${optionsList.map((option, index) => `
             <li> ${index + 1}. <span>${option}</span> </li>
@@ -62,6 +61,7 @@ function selectOption(){
                 activeOption.classList.remove('selected');
             }
             option.classList.add('selected');
+            console.log('option', option)
         });
     });
 }
@@ -70,7 +70,8 @@ function selectOption(){
 function checkAnswer(){
     _checkBtn.disabled = true;
     if(_options.querySelector('.selected')){
-        let selectedAnswer = _options.querySelector('.selected span').textString;
+        let selectedAnswer = _options.querySelector('.selected span').innerHTML.toString();
+
         if(selectedAnswer == HTMLDecode(correctAnswer)){
             correctScore++;
             _result.innerHTML = `<p><i class = "fas fa-check"></i>Correct Answer!</p>`;
@@ -113,6 +114,8 @@ function checkCount(){
 function setCount(){
     _totalQuestion.textContent = totalQuestion;
     _correctScore.textContent = correctScore;
+    const _questionsAnswered = document.getElementById('question_number');
+    question_number = Number(_questionsAnswered.textContent) + 1;
 }
 
 
