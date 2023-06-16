@@ -27,7 +27,7 @@ body{
 
 
 .wrapper{
-    background: linear-gradient(#70fdde67,#63c6ff62);
+    background: linear-gradient(#7cffe346,#63c6ff);
     padding: 1.5rem 4rem 3rem 4rem;
     width: 600px;
     height: 680px;
@@ -75,8 +75,8 @@ body{
     margin: .7rem 0;
     padding: .4rem 1.2rem;
     cursor: pointer;
-    border: 3px solid #70fddfb9,#63c6ffb4;
-    background: linear-gradient(#70fddfb9,#63c6ffb4);
+    border: 3px solid #70fdde6e,#63c6ffb4;
+    background: linear-gradient(#8cffffa1,#63c6ff);
     color: black;
     box-shadow: 0 4px 0 0 #440072;
     transition: var(--transition);
@@ -116,7 +116,7 @@ body{
 }
 .quiz-foot button:hover{
     background-color: #440072;
-    box-shadow: 0 4px 0 0 linear-gradient(#70fddfb9,#63c6ffb4);
+    box-shadow: 0 4px 0 0 linear-gradient(#70fdde75,#63c6ff98);
 }
 .quiz-foot button:active{
     transform: scale(0.95);
